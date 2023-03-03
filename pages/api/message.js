@@ -27,11 +27,11 @@ export default async function handler(req, res) {
                 prompt: req.body.Body, // completion based on this
                 temperature: 0.6, //
                 n: 1,
-                max_tokens: 300,
+                max_tokens: 150,
                 // stop: "."
             });
 
-            replyToBeSent = completion.data.choices[0].text
+            replyToBeSent = removeIncompleteText(completion.data.choices[0].text)
 
         } catch (error) {
             if (error.response) {
@@ -49,4 +49,11 @@ export default async function handler(req, res) {
     });
 
     res.end(messageResponse.toString());
+}
+
+//Removes the last sentance if it's being abruptly generated due to token limits.
+function removeIncompleteText(inputString) {
+    const match = inputString.match(/\b\.\s\d+/g);
+    const removeAfter = match ? inputString.slice(0, inputString.lastIndexOf(match[match.length - 1])) : inputString;
+    return removeAfter
 }
