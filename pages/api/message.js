@@ -1,38 +1,41 @@
-import {openai} from "openai";
-const dotenv = require("dotenv");
+import {
+    Configuration,
+    OpenAIApi
+} from "openai";
 
-dotenv.config();
+const configuration = new Configuration({
+    apiKey: process.env.OPENAI_API_KEY
+});
 
-openai.apiKey = process.env.OPENAI_API_KEY;
+const openAI = new OpenAIApi(configuration);
 
 export default async function handler(req, res) {
 
     const MessagingResponse = require('twilio').twiml.MessagingResponse;
     var messageResponse = new MessagingResponse();
 
-    const model = "gpt-3.5-turbo";
 
-    const prompt = req.body.Body || '';
+    const sentMessage = req.body.Body || '';
     let replyToBeSent = "";
 
     if (sentMessage.trim().length === 0) {
         replyToBeSent = "We could not get your message. Please try again";
     } else {
             try {
-                const completion = await openai.complete({
-                engine: "text-davinci-002", // required
-                prompt, // completion based on this
+                const completion = await openAI.createCompletion({
+                model: "text-davinci-003", // required
+                prompt: req.body.Body, // completion based on this
                 temperature: 0.6, //
                 n: 1,
-                max_tokens: 150,
+                max_tokens: 250,
                 // stop: "."
             });
 
-            replyToBeSent = removeIncompleteText(completion.choices[0].text)
+            replyToBeSent = removeIncompleteText(completion.data.choices[0].text)
 
         } catch (error) {
             if (error.response) {
-                replyToBeSent = error.response
+                replyToBeSent = "There was an issue with the server"
             } else { // error getting response
                 replyToBeSent = "An error occurred during your request.";
             }
