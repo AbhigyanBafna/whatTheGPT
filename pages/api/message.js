@@ -7,7 +7,7 @@ const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY
 });
 
-const openAI = new OpenAIApi(configuration);
+const openAI = new openai(configuration);
 
 export default async function handler(req, res) {
 
@@ -23,7 +23,7 @@ export default async function handler(req, res) {
         replyToBeSent = "We could not get your message. Please try again";
     } else {
             try {
-                const completion = await openai.complete({
+                const completion = await openAI.complete({
                 engine: "text-davinci-002", // required
                 prompt, // completion based on this
                 temperature: 0.6, //
