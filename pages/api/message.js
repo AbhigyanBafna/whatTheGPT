@@ -1,8 +1,9 @@
 import {openai} from "openai";
+const dotenv = require("dotenv");
 
+dotenv.config();
 
-const apiKey  = process.env.OPENAI_API_KEY
-openai.apiKey = apiKey;
+openai.apiKey = process.env.OPENAI_API_KEY;
 
 export default async function handler(req, res) {
 
