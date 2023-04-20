@@ -1,0 +1,21 @@
+{
+  "name": "what-the-gpt",
+  "version": "1.0.0",
+  "description": "A Whatsapp bot powered by chatGPT",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "author": "Abhi",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^13.1.6",
+    "openai": "^3.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "twilio": "^4.7.2"
+  }
+}
