@@ -18,9 +18,10 @@ git clone https://github.com/AbhigyanBafna/whatTheGPT.git
 [MongoDB](https://account.mongodb.com/account/register?signedOut=true) <br>
 <br>
 
-3.1) Get your SID and Auth Token from [Twilio](https://console.twilio.com/us1/account/keys-credentials/api-keys) <br> 
+3.1) Get your SID and Auth Token from [Twilio](https://console.twilio.com/us1/account/keys-credentials/api-keys) (3.1 is an optional step)<br> 
 TWILIO_ACCOUNT_SID <br>
-TWILIO_AUTH_TOKEN <br>
+TWILIO_AUTH_TOKEN <br> 
+
 <br>
 3.2) OPENAI_API_KEY from [openAI]() <br>
 
