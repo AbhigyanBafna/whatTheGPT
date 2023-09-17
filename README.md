@@ -23,7 +23,7 @@ TWILIO_ACCOUNT_SID <br>
 TWILIO_AUTH_TOKEN <br> 
 
 <br>
-3.2) OPENAI_API_KEY from [openAI]() <br>
+3.2) OPENAI_API_KEY from [openAI](https://platform.openai.com/account/api-keys) <br>
 
 3.3) MONGO_URI from [mongoDB](https://cloud.mongodb.com/) <br>
 
